@@ -16,9 +16,7 @@ In the name of time, $TIME Treasury supplies 1 $time coin per hour. Each second 
 
 Smart Contract
 ----------------------------------------------------------------------------------------------------------------------------------
-- Entry function [regist_miner](https://github.com/tiksupply/sui/blob/main/sources/mine.move#L94)   Registration function, each miner needs to register once upon their first run.
-- Entry function [mine](https://github.com/tiksupply/sui/blob/main/sources/mine.move#L130)    Mining function, verifies the submissions from miners and records them.
-- Entry function [claim](https://github.com/tiksupply/sui/blob/main/sources/tik_coin.move#L41C26)   claim $TIME to your wallet.
+
 - Shared Object Treasury: has the Treasury cap to mint $TIME.
 - Shared Object Miner: record proofs for each miner.
 - Shared Object Epochs: Record the total shares and number of miners for each epoch.

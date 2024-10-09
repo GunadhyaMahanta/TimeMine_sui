@@ -1,4 +1,4 @@
-module tik_supply::tikcoin {
+module tik_supply::timecoin {
 
     use sui::coin::{Self, Coin,TreasuryCap};
     use sui::tx_context::{sender};
@@ -10,11 +10,11 @@ module tik_supply::tikcoin {
     public struct SupplyEvent has copy, drop {
         totalsupply: u64,
     }
-    public struct TIKCOIN  has drop {}
+    public struct TIMECOIN  has drop {}
 
     public struct Treasury<phantom T> has key, store {
         id: UID,
-        treasuryCap: TreasuryCap<TIKCOIN>,
+        treasuryCap: TreasuryCap<TIMECOIN>,
         CirculatingSupply:u128,
         CmtyAccount:address,
     }
@@ -22,9 +22,9 @@ module tik_supply::tikcoin {
         id: UID
     }
 
-    fun init(witness: TIKCOIN, ctx: &mut TxContext) {
+    fun init(witness: TIMECOIN, ctx: &mut TxContext) {
         let (mut treasury_cap, metadata)
-            = coin::create_currency<TIKCOIN>(
+            = coin::create_currency<TIMECOIN>(
             witness,
             12, 
             b"TIME", 
@@ -35,7 +35,7 @@ module tik_supply::tikcoin {
         );
         transfer::public_freeze_object(metadata);
 
-        let treasury = Treasury<TIKCOIN> {
+        let treasury = Treasury<TIMECOIN> {
             id: object::new(ctx),
             treasuryCap:treasury_cap,
             CirculatingSupply:0,
@@ -48,7 +48,7 @@ module tik_supply::tikcoin {
 
     }
 
-    public entry fun claim(treasury:&mut Treasury<TIKCOIN>,miner: &mut Miner,epochs: &Epochs,  clock: &Clock,ctx: &mut TxContext )
+    public entry fun claim(treasury:&mut Treasury<TIMECOIN>,miner: &mut Miner,epochs: &Epochs,  clock: &Clock,ctx: &mut TxContext )
     {
        let claimab= tik_supply::mine::claim(miner,epochs,clock,ctx);
        if  (claimab>0)
@@ -61,12 +61,12 @@ module tik_supply::tikcoin {
        }
        
     }
-    public entry fun set_community_account(treasury:&mut Treasury<TIKCOIN>, cmtycap:&CmtyCap, newaddr:address,ctx: &mut TxContext)
+    public entry fun set_community_account(treasury:&mut Treasury<TIMECOIN>, cmtycap:&CmtyCap, newaddr:address,ctx: &mut TxContext)
     {
           treasury.CmtyAccount=newaddr;
     }
 
-    public entry fun show_total_supply(treasury:&Treasury<TIKCOIN>): u64 {
+    public entry fun show_total_supply(treasury:&Treasury<TIMECOIN>): u64 {
           let total_supply = coin::total_supply(&treasury.treasuryCap);
           event::emit(SupplyEvent { totalsupply : total_supply });
           total_supply

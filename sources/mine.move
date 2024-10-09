@@ -70,7 +70,7 @@ module tik_supply::mine {
 
             transfer::share_object(Miner{
                  id: object::new(ctx),
-                 Genesis: 1717977600,   //Genesis timestamp 
+                 Genesis: 1728450000,   //Genesis timestamp 
             });
       }
 

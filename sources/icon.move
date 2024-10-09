@@ -1,4 +1,4 @@
-module tik_supply::icon
+module TimeMine::icon
 {
     use sui::url::{Self, Url};
 

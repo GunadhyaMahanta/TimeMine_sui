@@ -1,4 +1,4 @@
-module TimeMine::tikcoin {
+module tik_supply::tikcoin {
 
     use sui::coin::{Self, Coin,TreasuryCap};
     use sui::tx_context::{sender};

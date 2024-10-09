@@ -27,9 +27,9 @@ module TimeMine::tikcoin {
             = coin::create_currency<TIKCOIN>(
             witness,
             12, 
-            b"TIK", 
-            b"TIKCOIN", 
-            b"Time Flies, TIK Stays! Everyone Gets a Fair Chance to Mine and Earn Rewards!", 
+            b"TIME", 
+            b"TIMECOIN", 
+            b"Time Flies, $TIME Stays! Everyone Gets a Fair Chance to Mine and Earn Rewards!", 
             option::some(get_icon_url()),
             ctx
         );

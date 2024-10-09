@@ -1,4 +1,4 @@
-module TimeMine::mine {
+module tik_supply::mine {
     use sui::tx_context::{sender};
     use sui::clock::Clock;
     use sui::address;
@@ -70,7 +70,7 @@ module TimeMine::mine {
 
             transfer::share_object(Miner{
                  id: object::new(ctx),
-                 Genesis: 1728446400,   //Genesis timestamp 
+                 Genesis: 1717977600,   //Genesis timestamp 
             });
       }
 
